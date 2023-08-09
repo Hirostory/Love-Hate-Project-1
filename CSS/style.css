@@ -1,12 +1,27 @@
 body {
     display: flex;
     align-items: center;
+    justify-content: center;
     
 }
 
 #gamearea {
+
     height: 640px;
     width: 512px;
-    background-color: black;
+    /* background-color: black; */
+    background-image: url("/Users/hiro/GA/projects/Love-Hate-Project-1/Images/forest_tiles.png");
+    border: 5px solid #6a0965;
     
 }
+
+.background {
+    position: absolute;
+    z-index: -1;
+    background-size: cover;
+    opacity: .5;
+}
+
+/* .music {
+    display: hidden;
+} */

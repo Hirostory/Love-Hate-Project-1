@@ -37,6 +37,7 @@ const players = [
   }
 ]
 
+const movementX = tile
 
 window.onload = function() {
     const gameArea = document.querySelector("#gamearea")
@@ -44,18 +45,54 @@ window.onload = function() {
       gameArea.height = areaHeight
     const context = gameArea.getContext("2d")
 
-
+    // love apperance
     const loveImage = new Image()
     loveImage.src = "Images/Love-Behind.png"
     
-    loveImage.onload = () => {
-      context.drawImage(loveImage, players[0].x, players[0].y, players[0].height, players[0].width)
-    }
+    // loveImage.onload = () => {
+    //   context.drawImage(loveImage, players[0].x, players[0].y, players[0].height, players[0].width)
+    // }
     
+    // hate apperance 
     const hateImage = new Image()
     hateImage.src = "Images/Hate-back.png"
 
-    hateImage.onload = () => {
-      context.drawImage(hateImage, players[1].x, players[1].y, players[1].height, players[1].width)
+    // hateImage.onload = () => {
+    //   context.drawImage(hateImage, players[1].x, players[1].y, players[1].height, players[1].width)
+    // }
+
+    //i can also put it in one function. 
+    loveImage.onload = () => {
+      hateImage.onload = () => {
+        const updatePlayers = () => {
+          context.clearRect(0, 0, areaWidth, areaHeight)
+          context.drawImage(loveImage, players[0].x, players[0].y, players[0].height, players[0].width)
+          context.drawImage(hateImage, players[1].x, players[1].y, players[1].height, players[1].width)
+          requestAnimationFrame(updatePlayers)
+        }
+        requestAnimationFrame(updatePlayers)
+      }
     }
+
+    document.addEventListener("keydown", moveLove)
+    document.addEventListener("keydown", moveHate)
+}
+
+const moveLove = (l) => {
+  if(l.code === "KeyA" && players[0].x - movementX >= 0) {
+    //made and fucntion for Love to abe able to move left and right and added if love move >= 0 love cant go further which us off the board.
+    players[0].x -= movementX
+  }
+  else if (l.code === "KeyD" && players[0].x + movementX + players[0].width + 22 <= areaWidth) {
+    players[0].x += movementX
+  }
+}
+
+const moveHate = (h) => {
+  if (h.code === "ArrowLeft" && players[1].x - movementX >= 0) {
+    players[1].x -= movementX
+  }
+  else if (h.code === "ArrowRight" && players[1].x + movementX + players[1].width <= areaWidth) {
+    players[1].x += movementX
+  }
 }
