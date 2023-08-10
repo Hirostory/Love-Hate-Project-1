@@ -25,6 +25,10 @@ const enemyHeight = tile*3
 const enemyWidth = tile + 22
 const enemySpeed = -2
 
+//beams 
+const beamArray = []
+const beamSpeedY = -10
+
 
 // class Enemy {
 //   constructor(image, enemyHeight, enemyWidth, x, y) {
@@ -131,6 +135,15 @@ window.onload = function() {
                               enemyMovement2(players[5], .5)
                               context.drawImage(enemyImage4, players[5].x, players[5].y, players[5].height, players[5].width)
                               requestAnimationFrame(updatePlayers)
+
+
+                              for (let i = 0; i < beamArray.length; i++){
+                                const beam = beamArray[i]
+                                beam.y += beamSpeedY
+                                context.fillStyle = "pink"
+                                context.fillRect(beam.x, beam.y, beam.width, beam.height)
+                          
+                              }
                           }
                           requestAnimationFrame(updatePlayers)
                       }
@@ -189,7 +202,10 @@ window.onload = function() {
 
     
     document.addEventListener("keydown", moveLove)
+    document.addEventListener("keyup", loveBeam)
     document.addEventListener("keydown", moveHate)
+    document.addEventListener("keyup", hateBeam)
+
 }
 
 
@@ -231,5 +247,31 @@ const moveHate = (h) => {
   }
   else if (h.code === "ArrowRight" && players[1].x + movementX + players[1].width <= areaWidth) {
     players[1].x += movementX
+  }
+}
+
+const loveBeam = (p) => {
+  if(p.code === "KeyW") {
+    const heartBeam = {
+      x: players[0].x + players[0].width*49/64,
+      y: players[0].y,
+      width: tile/3,
+      height: tile/2,
+      hit: false 
+    }
+    beamArray.push(heartBeam)
+  }
+}
+
+const hateBeam = (h) => {
+  if(h.code === "ArrowUp") {
+    const meanBeam = {
+      x: players[1].x + players[1].width*49/64,
+      y: players[1].y,
+      width: tile/3,
+      height: tile/2,
+      hit: false 
+    }
+    beamArray.push(meanBeam)
   }
 }
