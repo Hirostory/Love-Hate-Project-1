@@ -1,4 +1,4 @@
-
+console.log("hello")
 //gameboard 
 
 const tile = 32
@@ -99,12 +99,17 @@ const players = [
   }
 ]
 
+// setting the score board in the game by grabbing it from HTML ELemennts 
 let lovePoints = players[0].points
 let hatePoints = players[1].points
+
+const lovePointsTally = document.querySelector("#lovePoints")
+const hatePointTally = document.querySelector("#hatePoints")
 
 console.log(players[1].x)
 console.log(players[0].x)
 const movementX = tile
+
 
 window.onload = function() {
     const gameArea = document.querySelector("#gamearea")
@@ -138,6 +143,9 @@ window.onload = function() {
                       
                       enemyImage4.onload = () => {
                           const updatePlayers = () => {
+                              lovePointsTally.textContent = lovePoints
+                              hatePointTally.textContent = hatePoints
+
                               context.clearRect(0, 0, areaWidth, areaHeight)
                               context.drawImage(loveImage, players[0].x, players[0].y, players[0].height, players[0].width)
                               context.drawImage(hateImage, players[1].x, players[1].y, players[1].height, players[1].width)
@@ -195,9 +203,11 @@ window.onload = function() {
                                     if(lovePoints === 5) {
                                       winner = "Love"
                                       alert(winner + " wins")
+                                      gameRestart()
                                     } else if (hatePoints === 5) {
                                       winner = "hate"
                                       alert(winner + " wins")
+                                      gameRestart()
                                     }
                                   }
                                 }
@@ -207,6 +217,8 @@ window.onload = function() {
                                 console.log(beamArray)
                               }
                             }
+                            
+
                           }
                           requestAnimationFrame(updatePlayers)
                       }
@@ -262,7 +274,6 @@ window.onload = function() {
     //     requestAnimationFrame(updatePlayers)
     //   }
     // }
-
     
     document.addEventListener("keydown", moveLove)
     document.addEventListener("keyup", loveBeam)
@@ -352,5 +363,17 @@ const detectCollision = (a, b) => {
 const respawnCat = (cat) => {
   cat.alive = true
   cat.x = areaWidth
+}
 
+const gameRestart = () => {
+
+  //reset point 
+  lovePoints = 0
+  hatePoints = 0
+
+  //place player on the starting location 
+   players[0].x = loveX
+   players[0].y = loveY
+   players[1].x = hateX
+   players[1].y = hateY
 }
