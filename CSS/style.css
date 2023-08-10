@@ -117,6 +117,9 @@ body {
     margin-right: -5rem;
 }
 
-/* .music {
-    display: hidden;
-} */
+#GameOpeningaudio {
+    position: absolute;
+    margin-top: 57rem;
+    margin-right: 100rem;
+    opacity: 0.3;
+}

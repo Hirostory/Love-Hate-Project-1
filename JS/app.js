@@ -116,6 +116,7 @@ window.onload = function() {
       gameArea.width = areaWidth
       gameArea.height = areaHeight
     const context = gameArea.getContext("2d")
+    // document.querySelector("#GameOpeningaudio").play()
 
     // love apperance
     const loveImage = new Image()
