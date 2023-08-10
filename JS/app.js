@@ -134,18 +134,26 @@ window.onload = function() {
                               if (players[2].alive) {
                               enemyMovement(players[2], 0)
                               context.drawImage(enemyImage1, players[2].x, players[2].y, players[2].height, players[2].width)
+                              } else {
+                                respawnCat(players[2])
                               }
                               if (players[3].alive) {
                               enemyMovement2(players[3], 0)
                               context.drawImage(enemyImage2, players[3].x, players[3].y, players[3].height, players[3].width)
+                              } else {
+                                respawnCat(players[3])
                               }
                               if (players[4].alive) {
                               enemyMovement(players[4], .5)
                               context.drawImage(enemyImage3, players[4].x, players[4].y, players[4].height, players[4].width)
+                              } else {
+                                respawnCat(players[4])
                               }
                               if (players[5].alive) {
                               enemyMovement2(players[5], .5)
                               context.drawImage(enemyImage4, players[5].x, players[5].y, players[5].height, players[5].width)
+                              } else{
+                                respawnCat(players[5])
                               }
                               requestAnimationFrame(updatePlayers)
 
@@ -307,4 +315,9 @@ const detectCollision = (a, b) => {
          a.x + a.width > b.x &&
          a.y < b.y + b.height &&
          a.y + a.height > b.y
+}
+
+const respawnCat = (cat) => {
+  cat.alive = true
+  cat.x = areaWidth
 }
