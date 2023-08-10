@@ -29,6 +29,10 @@ const enemySpeed = -2
 const beamArray = []
 const beamSpeedY = -10
 
+//points tally
+
+
+
 
 // class Enemy {
 //   constructor(image, enemyHeight, enemyWidth, x, y) {
@@ -51,13 +55,15 @@ const players = [
     y: loveY,
     width: loveWidth,
     height: loveHeight,
+    points: 0
   },
   {
     name: "Hate",
     x: hateX,
     y: hateY,
     width: hateWidth,
-    height: hateHeight
+    height: hateHeight,
+    points: 0
   },
   {
     name: "cat1",
@@ -92,6 +98,10 @@ const players = [
     alive: true
   }
 ]
+
+let lovePoints = players[0].points
+let hatePoints = players[1].points
+
 console.log(players[1].x)
 console.log(players[0].x)
 const movementX = tile
@@ -169,7 +179,26 @@ window.onload = function() {
                                   if (cat.alive && detectCollision(beam, cat)) {
                                     beam.hit = true
                                     cat.alive = false
-                                    cat--
+                                    console.log(cat.alive)
+
+                                    if (beam.shooter === "Love" && cat.alive === false) {
+                                      lovePoints += 1
+                                    } else if (beam.shooter === "Hate" && cat.alive === false){
+                                      hatePoints += 1
+                                    } else {
+                                      console.log("notworking")
+                                    }
+                                  
+                                   console.log(lovePoints)
+                                   console.log(hatePoints)
+
+                                    if(lovePoints === 5) {
+                                      winner = "Love"
+                                      alert(winner + " wins")
+                                    } else if (hatePoints === 5) {
+                                      winner = "hate"
+                                      alert(winner + " wins")
+                                    }
                                   }
                                 }
                               
@@ -291,7 +320,8 @@ const loveBeam = (p) => {
       y: players[0].y,
       width: tile/3,
       height: tile/2,
-      hit: false 
+      hit: false, 
+      shooter: players[0].name,
     }
     beamArray.push(heartBeam)
   }
@@ -304,11 +334,13 @@ const hateBeam = (h) => {
       y: players[1].y,
       width: tile/3,
       height: tile/2,
-      hit: false 
+      hit: false,
+      shooter: players[1].name
     }
     beamArray.push(meanBeam)
   }
 }
+
 
 const detectCollision = (a, b) => {
   return a.x < b.x + b.width &&
@@ -320,4 +352,5 @@ const detectCollision = (a, b) => {
 const respawnCat = (cat) => {
   cat.alive = true
   cat.x = areaWidth
+
 }
