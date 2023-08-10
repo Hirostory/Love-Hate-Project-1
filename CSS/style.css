@@ -1,8 +1,21 @@
 body {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
     
+}
+
+.gameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.logo {
+    margin-bottom: 4rem;
 }
 
 #gamearea {
@@ -11,7 +24,7 @@ body {
     width: 512px;
     /* background-color: black; */
     background-image: url("/Users/hiro/GA/projects/Love-Hate-Project-1/Images/forest_tiles.png");
-    border: 5px solid #6a0965;
+    border: 7px inset #bc62b8;
     
 }
 
