@@ -65,6 +65,7 @@ const players = [
     y: tile * 1,
     width: enemyWidth,
     height: enemyHeight,
+    alive: true
   },
   {
     name: "cat2",
@@ -72,6 +73,7 @@ const players = [
     y: tile * 3,
     width: enemyWidth,
     height: enemyHeight,
+    alive: true
   },
   {
     name: "cat3",
@@ -79,6 +81,7 @@ const players = [
     y: tile * 5,
     width: enemyWidth,
     height: enemyHeight,
+    alive: true
   },
   {
     name: "cat4",
@@ -86,8 +89,10 @@ const players = [
     y: tile * 7,
     width: enemyWidth,
     height: enemyHeight,
+    alive: true
   }
 ]
+console.log(players[1].x)
 console.log(players[0].x)
 const movementX = tile
 
@@ -126,14 +131,22 @@ window.onload = function() {
                               context.clearRect(0, 0, areaWidth, areaHeight)
                               context.drawImage(loveImage, players[0].x, players[0].y, players[0].height, players[0].width)
                               context.drawImage(hateImage, players[1].x, players[1].y, players[1].height, players[1].width)
+                              if (players[2].alive) {
                               enemyMovement(players[2], 0)
                               context.drawImage(enemyImage1, players[2].x, players[2].y, players[2].height, players[2].width)
+                              }
+                              if (players[3].alive) {
                               enemyMovement2(players[3], 0)
                               context.drawImage(enemyImage2, players[3].x, players[3].y, players[3].height, players[3].width)
+                              }
+                              if (players[4].alive) {
                               enemyMovement(players[4], .5)
                               context.drawImage(enemyImage3, players[4].x, players[4].y, players[4].height, players[4].width)
+                              }
+                              if (players[5].alive) {
                               enemyMovement2(players[5], .5)
                               context.drawImage(enemyImage4, players[5].x, players[5].y, players[5].height, players[5].width)
+                              }
                               requestAnimationFrame(updatePlayers)
 
 
@@ -142,8 +155,21 @@ window.onload = function() {
                                 beam.y += beamSpeedY
                                 context.fillStyle = "pink"
                                 context.fillRect(beam.x, beam.y, beam.width, beam.height)
-                          
+
+                                for (let j = 2; j < players.length; j++) {
+                                  const cat = players[j]
+                                  if (cat.alive && detectCollision(beam, cat)) {
+                                    beam.hit = true
+                                    cat.alive = false
+                                    cat--
+                                  }
+                                }
+                              
+                              while(beamArray.length > 0 && (beamArray[0].hit || beamArray[0].y < 0)) {
+                                beamArray.shift()
+                                console.log(beamArray)
                               }
+                            }
                           }
                           requestAnimationFrame(updatePlayers)
                       }
@@ -274,4 +300,11 @@ const hateBeam = (h) => {
     }
     beamArray.push(meanBeam)
   }
+}
+
+const detectCollision = (a, b) => {
+  return a.x < b.x + b.width &&
+         a.x + a.width > b.x &&
+         a.y < b.y + b.height &&
+         a.y + a.height > b.y
 }
