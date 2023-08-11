@@ -28,11 +28,7 @@ const enemySpeed = -2
 const beamArray = []
 const beamSpeedY = -10
 
-//points tally
-
-
-
-
+//tried to do class but it diddnt work in the onload so i decided to just put every player in one object
 // class Enemy {
 //   constructor(image, enemyHeight, enemyWidth, x, y) {
 //     this.image = image 
@@ -47,6 +43,10 @@ const beamSpeedY = -10
 // console.log(enemy1.x)
 // console.log(enemy1.y)
 
+
+//giving all my players and targets shape or form to place them in my gaming canvas 
+//later needed a point for my playanble charcter so they can hold a point
+//having a bolean statement that the cats are alive will be later use for the shooting interaction and respawning
 const players = [
   {
     name: "Love",
@@ -98,6 +98,10 @@ const players = [
   }
 ]
 
+//movement of the players 
+const movementX = tile
+
+
 // setting the score board in the game by grabbing it from HTML ELemennts 
 let lovePoints = players[0].points
 let hatePoints = players[1].points
@@ -105,48 +109,52 @@ let hatePoints = players[1].points
 const lovePointsTally = document.querySelector("#lovePoints")
 const hatePointTally = document.querySelector("#hatePoints")
 
-console.log(players[1].x)
-console.log(players[0].x)
-const movementX = tile
-
-
 window.onload = function() {
+    // grab the gamearea to inteact with javascript 
     const gameArea = document.querySelector("#gamearea")
       gameArea.width = areaWidth
       gameArea.height = areaHeight
     const context = gameArea.getContext("2d")
     // document.querySelector("#GameOpeningaudio").play()
 
-    // love apperance
+    // putting them on one codeblock when i seperated the cats and playable charcter in their own onload. Both onload overide each other and couldnt able to find a solution how to let two onload to work together so decided to put them in one and happend tow work. though my code is messy.
+    //love image 
     const loveImage = new Image()
     loveImage.src = "Images/Love-Behind.png"
     
+    //hate image 
     loveImage.onload = () => {
       const hateImage = new Image();
       hateImage.src = "Images/Hate-back.png"
-      
+
+      //cat image 
       hateImage.onload = () => {
           const enemyImage1 = new Image()
           enemyImage1.src = "Images/walking-3.png"
           
+          //cat image 
           enemyImage1.onload = () => {
               const enemyImage2 = new Image();
               enemyImage2.src = "Images/walking-2.png"
               
+              //cat image 
               enemyImage2.onload = () => {
                   const enemyImage3 = new Image()
                   enemyImage3.src = "Images/walking-1.png"
                   
+                  //cat image 
                   enemyImage3.onload = () => {
                       const enemyImage4 = new Image()
                       enemyImage4.src = "Images/walking-2.png"
                       
+                      //cat image 
                       enemyImage4.onload = () => {
                           const updatePlayers = () => {
                               lovePointsTally.textContent = lovePoints
                               hatePointTally.textContent = hatePoints
 
-                              context.clearRect(0, 0, areaWidth, areaHeight)
+                              // placing the demintions so the 2d art pics were able to appear
+                              context.clearRect(0, 0, areaWidth, areaHeight) //this let me redraw the love and hate when they move left and right
                               context.drawImage(loveImage, players[0].x, players[0].y, players[0].height, players[0].width)
                               context.drawImage(hateImage, players[1].x, players[1].y, players[1].height, players[1].width)
                               if (players[2].alive) {
@@ -175,7 +183,7 @@ window.onload = function() {
                               }
                               requestAnimationFrame(updatePlayers)
 
-
+                              // from the refrence read and watch basically use a for loop for create  bullet shooting out of the playable characters then goes to the beam array. then the second for loop is a interaction of the bullet to the cat target and place all my fun functions  in the conditonal statements. 
                               for (let i = 0; i < beamArray.length; i++){
                                 const beam = beamArray[i]
                                 beam.y += beamSpeedY
@@ -213,6 +221,7 @@ window.onload = function() {
                                   }
                                 }
                               
+                                // had to add this one cause when i didnt have this one  my bullet interaction didnt work and the refrences i look need a way to delete the bullet comming out from the canvas.
                               while(beamArray.length > 0 && (beamArray[0].hit || beamArray[0].y < 0)) {
                                 beamArray.shift()
                                 console.log(beamArray)
@@ -228,7 +237,7 @@ window.onload = function() {
           }
       }
   }
-    
+    // my failed atempt to use two onload and kept overriding each other... hours i spent to fix lol 
 // loveImage.onload = () => {
     //   context.drawImage(loveImage, players[0].x, players[0].y, players[0].height, players[0].width)
     // }
@@ -276,6 +285,7 @@ window.onload = function() {
     //   }
     // }
     
+    // added eventlistner for playable charatcer's control 
     document.addEventListener("keydown", moveLove)
     document.addEventListener("keyup", loveBeam)
     document.addEventListener("keydown", moveHate)
@@ -283,7 +293,7 @@ window.onload = function() {
 
 }
 
-
+// made two function for the cat movemnet to left to right and right to left and also give each of them different speed to each have their unique movement 
 const enemyMovement = (cat, speed) => {
   cat.x += enemySpeed - speed
   
@@ -305,10 +315,10 @@ const enemyMovement2 = (cat, speed) => {
   }
 }
 
-
+ //made and fucntion for Love and hate to abe able to move left and right and added if love move >= 0 love cant go further which us off the board.
+ // the other way i had to looked some some refence cause i wouldnt have gotten that right
 const moveLove = (l) => {
   if(l.code === "KeyA" && players[0].x - movementX >= 0) {
-    //made and fucntion for Love to abe able to move left and right and added if love move >= 0 love cant go further which us off the board.
     players[0].x -= movementX
   }
   else if (l.code === "KeyD" && players[0].x + movementX + players[0].width + 22 <= areaWidth) {
@@ -325,6 +335,10 @@ const moveHate = (h) => {
   }
 }
 
+//creation of the bullet image and where its commung from 
+//this is kinda what the refrence i looked just change the measurement 
+// had to add the shoot to determin who uses the gun. becuase i realize that when i use the target it didnt know who was shooting and that player would get the point
+//bolean hit would help me later on with the interaction with the collison function and targets cats
 const loveBeam = (p) => {
   if(p.code === "KeyW") {
     const heartBeam = {
@@ -353,19 +367,21 @@ const hateBeam = (h) => {
   }
 }
 
-
+// from videos i watch from Alex D. kind help me undertand the concept.. b
 const detectCollision = (a, b) => {
-  return a.x < b.x + b.width &&
-         a.x + a.width > b.x &&
-         a.y < b.y + b.height &&
-         a.y + a.height > b.y
+  return a.x < b.x + b.width && // beam top left wouldnt reach cat top right
+         a.x + a.width > b.x && // beam top right wouldnt pass cat top left
+         a.y < b.y + b.height && // beam  top left wuldnt reach cat bottom left
+         a.y + a.height > b.y     // beam bottom left would pass cat top left conrner
 }
 
+// funtion help me respawns my cat when ever the cat bolean turned false it would make them true again and place them from their origin starting point
 const respawnCat = (cat) => {
   cat.alive = true
   cat.x = areaWidth
 }
 
+// made a restart funtion for user to start tha game again 
 const gameRestart = () => {
 
   //reset point 
@@ -387,6 +403,8 @@ const gameRestart = () => {
    targetbutton.innerHTML = null
 }
 
+
+//added a interaction with the bullet hit when love hit cat cat will appear on the conner top right of the website and say something cat love in the collections array i placed in the function. Used math random to randmize the saying. same goes with hate bullet hit interactions. 
 const hitByLove = () => {
   const targetAlertCat = document.querySelector(".alertCat")
   const happyCat = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Happy-cat.png" />'
@@ -405,6 +423,8 @@ const hitByHate = () => {
   targetAlertCat.innerHTML = angrySaying[randomStatement] + angryCat
 }
 
+
+//made a demo of a win board when some one won and would apper image of love and harte victorty pic and a recommended move with a buttom to restart the game. 
 const loveWin = () => {
   const targetWinBoard = document.querySelector(".winboard")
   const targetbutton = document.querySelector(".boardbutton")
