@@ -10,7 +10,9 @@ Meet two celestial best friends, Love and Hate, who find themselves at odds over
 
 ## How to Play
 
-/Users/hiro/GA/projects/Love-Hate-Project-1/Images/controls.png
+![controls](https://github.com/Hirostory/Love-Hate-Project-1/assets/135872883/f8de8633-591e-4a54-be49-a0233ac02038)
+
+
 ![Screenshot 2023-08-11 at 4 59 17 PM](https://github.com/Hirostory/Love-Hate-Project-1/assets/135872883/8fdc59e8-b885-40ba-b6aa-f4a6f467051a)
 
 
