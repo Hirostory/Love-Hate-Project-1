@@ -3,6 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: auto;
     margin: 0;
     font-family: 'Teko', sans-serif;
     /* background-image: url("/Users/hiro/GA/projects/Love-Hate-Project-1/Images/cute background.gif");
@@ -42,7 +43,7 @@ body {
     height: 150px;
     width: 420px;
     /*border: 5px solid red; */
-    background-image: url("Images/pink background .png");
+    background-image: url("../Images/pink background .png");
     background-position: bottom;
     margin-bottom: 16rem;
     margin-left: -15rem;  
