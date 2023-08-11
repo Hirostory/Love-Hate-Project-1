@@ -1,10 +1,12 @@
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: fit-content;
     width: auto;
     margin: 0;
+    margin-top: 5rem;
     font-family: 'Teko', sans-serif;
     /* background-image: url("/Users/hiro/GA/projects/Love-Hate-Project-1/Images/cute background.gif");
     background-size: cover;
@@ -19,14 +21,14 @@ body {
     min-width: 100%;
     min-height: 100%;
     z-index: -1;
-    background-size: 90%;
+    background-size: 80%;
     opacity: .5;
 }
 
 #GameOpeningaudio {
     position: absolute;
-    margin-top: 57rem;
-    margin-right: 100rem;
+    margin-top: 55rem;
+    margin-right: 63rem;
     opacity: 0.3;
 }
 
