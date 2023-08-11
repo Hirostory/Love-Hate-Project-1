@@ -4,9 +4,7 @@ a unique twist on the classic Space Invaders game. In this game, you'll find you
 
 ## Meet playable Characters
 
-![Love-Victory](https://github.com/Hirostory/Love-Hate-Project-1/assets/135872883/65359fbc-627c-42d9-a5e1-8963ac29fad5)
-
-![Hate-Victory](https://github.com/Hirostory/Love-Hate-Project-1/assets/135872883/344fe759-e5f3-424e-b867-da9354f65f75)
+![Love-Victory](https://github.com/Hirostory/Love-Hate-Project-1/assets/135872883/65359fbc-627c-42d9-a5e1-8963ac29fad5) ![Hate-Victory](https://github.com/Hirostory/Love-Hate-Project-1/assets/135872883/344fe759-e5f3-424e-b867-da9354f65f75)
 
 
 
