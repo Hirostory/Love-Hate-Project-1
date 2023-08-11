@@ -407,7 +407,7 @@ const gameRestart = () => {
 //added a interaction with the bullet hit when love hit cat cat will appear on the conner top right of the website and say something cat love in the collections array i placed in the function. Used math random to randmize the saying. same goes with hate bullet hit interactions. 
 const hitByLove = () => {
   const targetAlertCat = document.querySelector(".alertCat")
-  const happyCat = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Happy-cat.png" />'
+  const happyCat = '<img src ="Images/Happy-cat.png" />'
   const happySaying = ["I LOVE CODING", "I LOVE JAVASCRIPT!", "I LOVE TO HELP PEOPLE", "I LOVE MYSELF", "I LOVE ROM-COM"]
   const randomStatement = Math.floor(Math.random() * happySaying.length)
 
@@ -417,7 +417,7 @@ const hitByLove = () => {
 
 const hitByHate = () => {
   const targetAlertCat = document.querySelector(".alertCat")
-  const angryCat = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Angry-cat.png" />'
+  const angryCat = '<img src ="Images/Angry-cat.png" />'
   const angrySaying = ["I HATE CODING", "I HATE JAVASCRIPT", "I LOVE SEEING PEOPLE SUFFER", "I HATE MYSELF", "I HATE ROM-COM"]
   const randomStatement = Math.floor(Math.random() * angrySaying.length)
   targetAlertCat.innerHTML = angrySaying[randomStatement] + angryCat
@@ -428,8 +428,8 @@ const hitByHate = () => {
 const loveWin = () => {
   const targetWinBoard = document.querySelector(".winboard")
   const targetbutton = document.querySelector(".boardbutton")
-  const victoryLove = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Love-Victory.png" style = "margin-top: 1rem";/> '
-  const romanticMovie = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/romantic-sample.jpg" /> '
+  const victoryLove = '<img src ="Images/Love-Victory.png" style = "margin-top: 1rem";/> '
+  const romanticMovie = '<img src ="Images/romantic-sample.jpg" /> '
   const button = '<button class= "restartB" style= "background-color: #EA4C89; color: #FFFFFF;">PLAY AGAIN</button>'
   
   targetWinBoard.style.backgroundColor = "#bc62b8"
@@ -447,8 +447,8 @@ const loveWin = () => {
 const hateWin = () => {
   const targetWinBoard = document.querySelector(".winboard")
   const targetbutton = document.querySelector(".boardbutton")
-  const victoryHate = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Hate-Victory.png" style = "margin-top: 1rem";/> '
-  const revengeMovie = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/revenge-sample.jpg" /> '
+  const victoryHate = '<img src ="Images/Hate-Victory.png" style = "margin-top: 1rem";/> '
+  const revengeMovie = '<img src ="Images/revenge-sample.jpg" /> '
   const button = '<button class= "restartB" style= "background-color: #EA4C89; color: #FFFFFF;">PLAY AGAIN</button>'
   
   targetWinBoard.style.backgroundColor = "#bc62b8"
