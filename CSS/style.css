@@ -42,7 +42,7 @@ body {
     height: 150px;
     width: 420px;
     /*border: 5px solid red; */
-    background-image: url("/Users/hiro/GA/projects/Love-Hate-Project-1/Images/pink background .png");
+    background-image: url("Images/pink background .png");
     background-position: bottom;
     margin-bottom: 16rem;
     margin-left: -15rem;  
@@ -105,7 +105,7 @@ body {
     height: 640px;
     width: 512px;
     /* background-color: black; */
-    background-image: url("/Users/hiro/GA/projects/Love-Hate-Project-1/Images/forest_tiles.png");
+    background-image: url("../Images/forest-tiles.png");
     border: 7px inset #bc62b8;
     margin-left: -7rem;
 }
@@ -148,7 +148,7 @@ body {
     width: 400px;
     background-position: center;
     z-index: 2;
-    background-image: url("/Users/hiro/GA/projects/Love-Hate-Project-1/Images/controls.png");
+    background-image: url("../Images/controls.png");
     background-size: 80%;
     background-repeat: no-repeat;
     margin-left: -25rem;
