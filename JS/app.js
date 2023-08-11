@@ -390,14 +390,19 @@ const gameRestart = () => {
 const hitByLove = () => {
   const targetAlertCat = document.querySelector(".alertCat")
   const happyCat = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Happy-cat.png" />'
-  targetAlertCat.innerHTML = '<p>"I LOVE CODDING!"</p>' + happyCat
+  const happySaying = ["I LOVE CODING", "I LOVE JAVASCRIPT!", "I LOVE TO HELP PEOPLE", "I LOVE MYSELF", "I LOVE ROM-COM"]
+  const randomStatement = Math.floor(Math.random() * happySaying.length)
+
+  targetAlertCat.innerHTML = happySaying[randomStatement] + happyCat
   
 }
 
 const hitByHate = () => {
   const targetAlertCat = document.querySelector(".alertCat")
   const angryCat = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Angry-cat.png" />'
-  targetAlertCat.innerHTML = '<p>"I HATE CODING!"</p>' + angryCat
+  const angrySaying = ["I HATE CODING", "I HATE JAVASCRIPT", "I LOVE SEEING PEOPLE SUFFER", "I HATE MYSELF", "I HATE ROM-COM"]
+  const randomStatement = Math.floor(Math.random() * angrySaying.length)
+  targetAlertCat.innerHTML = angrySaying[randomStatement] + angryCat
 }
 
 const loveWin = () => {
