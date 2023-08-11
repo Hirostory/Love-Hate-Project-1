@@ -162,10 +162,49 @@ body {
 
 }
 
+.winner{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+}
+
 .winboard {
-    height: 500px;
+    /* background-color: #3e1045; */
+    height: 650px;
     width: 300px;
     margin-left: 1rem;
-    background-color: #bc62b8;
+    border-radius: 20px;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.boardbutton{
     position: absolute;
+    margin-top: 37rem;
+    margin-left: 1rem;
+}
+
+.restartB {
+  /* background-color: #EA4C89; */
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  /* color: #FFFFFF; */
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+
 }

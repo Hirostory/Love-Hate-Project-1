@@ -192,8 +192,6 @@ window.onload = function() {
                                     if (beam.shooter === "Love" && cat.alive === false) {
                                       lovePoints += 1
                                       hitByLove()
-
-                                      hitByLove().remove()
                                     } else if (beam.shooter === "Hate" && cat.alive === false){
                                       hatePoints += 1
                                       hitByHate()
@@ -206,12 +204,11 @@ window.onload = function() {
 
                                     if(lovePoints === 5) {
                                       winner = "Love"
-                                      alert(winner + " wins")
-                                      gameRestart()
+                                      loveWin()
+                                      // gameRestart()
                                     } else if (hatePoints === 5) {
                                       winner = "hate"
-                                      alert(winner + " wins")
-                                      gameRestart()
+                                      hateWin()
                                     }
                                   }
                                 }
@@ -380,6 +377,14 @@ const gameRestart = () => {
    players[0].y = loveY
    players[1].x = hateX
    players[1].y = hateY
+
+   const targetWinBoard = document.querySelector(".winboard")
+   targetWinBoard.innerHTML = null
+   targetWinBoard.style.backgroundColor = null
+   targetWinBoard.style.color = null
+
+   const targetbutton = document.querySelector(".boardbutton")
+   targetbutton.innerHTML = null
 }
 
 const hitByLove = () => {
@@ -392,9 +397,43 @@ const hitByLove = () => {
 const hitByHate = () => {
   const targetAlertCat = document.querySelector(".alertCat")
   const angryCat = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Angry-cat.png" />'
-  targetAlertCat.innerHTML = '<p>"I HATE CODDING!"</p>' + angryCat
+  targetAlertCat.innerHTML = '<p>"I HATE CODING!"</p>' + angryCat
 }
 
 const loveWin = () => {
+  const targetWinBoard = document.querySelector(".winboard")
+  const targetbutton = document.querySelector(".boardbutton")
+  const victoryLove = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Love-Victory.png" style = "margin-top: 1rem";/> '
+  const romanticMovie = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/romantic-sample.jpg" /> '
+  const button = '<button class= "restartB" style= "background-color: #EA4C89; color: #FFFFFF;">PLAY AGAIN</button>'
   
+  targetWinBoard.style.backgroundColor = "#bc62b8"
+  targetWinBoard.style.color = "#C1F0F4"
+  
+  targetWinBoard.innerHTML = romanticMovie + '<p>LOVE WIN AND RECCOMENDED</p>' + victoryLove
+  targetbutton.innerHTML = button
+
+  const targetReset = document.querySelector(".restartB")
+
+  targetReset.addEventListener("click", gameRestart)
+
+}
+
+const hateWin = () => {
+  const targetWinBoard = document.querySelector(".winboard")
+  const targetbutton = document.querySelector(".boardbutton")
+  const victoryHate = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Hate-Victory.png" style = "margin-top: 1rem";/> '
+  const revengeMovie = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/revenge-sample.jpg" /> '
+  const button = '<button class= "restartB" style= "background-color: #EA4C89; color: #FFFFFF;">PLAY AGAIN</button>'
+  
+  targetWinBoard.style.backgroundColor = "#bc62b8"
+  targetWinBoard.style.color = "#C1F0F4"
+  
+  targetWinBoard.innerHTML = revengeMovie + '<p>HATE WIN AND RECCOMENDED</p>' + victoryHate
+  targetbutton.innerHTML = button
+
+  const targetReset = document.querySelector(".restartB")
+
+  targetReset.addEventListener("click", gameRestart)
+
 }
