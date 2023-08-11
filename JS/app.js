@@ -1,4 +1,3 @@
-console.log("hello")
 //gameboard 
 
 const tile = 32
@@ -192,8 +191,12 @@ window.onload = function() {
 
                                     if (beam.shooter === "Love" && cat.alive === false) {
                                       lovePoints += 1
+                                      hitByLove()
+
+                                      hitByLove().remove()
                                     } else if (beam.shooter === "Hate" && cat.alive === false){
                                       hatePoints += 1
+                                      hitByHate()
                                     } else {
                                       console.log("notworking")
                                     }
@@ -377,4 +380,17 @@ const gameRestart = () => {
    players[0].y = loveY
    players[1].x = hateX
    players[1].y = hateY
+}
+
+const hitByLove = () => {
+  const targetAlertCat = document.querySelector(".alertCat")
+  const happyCat = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Happy-cat.png" />'
+  targetAlertCat.innerHTML = '<p>"I LOVE CODDING!"</p>' + happyCat
+  
+}
+
+const hitByHate = () => {
+  const targetAlertCat = document.querySelector(".alertCat")
+  const angryCat = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Angry-cat.png" />'
+  targetAlertCat.innerHTML = '<p>"I HATE CODDING!"</p>' + angryCat
 }

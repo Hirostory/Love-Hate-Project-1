@@ -56,7 +56,7 @@ body {
     text-align: center;
     font-size: 15px;
     margin: 14px;
-    color: rgb(62, 16, 69);
+    color: #3e1045;
 }
 
 .infohead {
@@ -99,6 +99,10 @@ body {
 
 }
 
+#pointsTally {
+    margin-left: -7rem;
+}
+
 .column2 {
     margin-right: 15rem;
 }
@@ -115,12 +119,18 @@ body {
 }
 
 .alertCat{
-    height: 300px;
-    width: 300px;
-    background-color: white;
+    height: 200px;
+    width: 200px;
     margin-left: -30rem;
     margin-right: -5rem;
     margin-bottom: 1rem;
+    font-weight: bold;
+    color: #3e1045;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 #GameOpeningaudio {
