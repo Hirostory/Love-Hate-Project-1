@@ -394,3 +394,7 @@ const hitByHate = () => {
   const angryCat = '<img src ="/Users/hiro/GA/projects/Love-Hate-Project-1/Images/Angry-cat.png" />'
   targetAlertCat.innerHTML = '<p>"I HATE CODDING!"</p>' + angryCat
 }
+
+const loveWin = () => {
+  
+}

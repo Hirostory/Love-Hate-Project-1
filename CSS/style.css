@@ -161,3 +161,11 @@ body {
     opacity: .8;
 
 }
+
+.winboard {
+    height: 500px;
+    width: 300px;
+    margin-left: 1rem;
+    background-color: #bc62b8;
+    position: absolute;
+}
