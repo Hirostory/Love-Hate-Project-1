@@ -210,11 +210,11 @@ window.onload = function() {
                                    console.log(lovePoints)
                                    console.log(hatePoints)
 
-                                    if(lovePoints === 5) {
+                                    if(lovePoints === 10) {
                                       winner = "Love"
                                       loveWin()
                                       // gameRestart()
-                                    } else if (hatePoints === 5) {
+                                    } else if (hatePoints === 10) {
                                       winner = "hate"
                                       hateWin()
                                     }
