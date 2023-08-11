@@ -18,7 +18,7 @@ body {
     min-width: 100%;
     min-height: 100%;
     z-index: -1;
-    background-size: cover;
+    background-size: contain;
     opacity: .5;
 }
 
@@ -111,8 +111,9 @@ body {
 }
 #pointsTally {
     margin-left: -7rem;
-    color: white;
+    color: #8e458a;
     font-size: 2rem;
+    font-weight: bolder;
 }
 .column2 {
     margin-right: 15rem;
