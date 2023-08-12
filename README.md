@@ -28,7 +28,7 @@ Score 10 points before your opponent does
 
 - HTML 
 - CSS 
-- JACASCRIPT
+- JAVASCRIPT
 
 ## Link to Thhe Live Site 
 
